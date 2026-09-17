@@ -8,20 +8,23 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/Scrolltotop";
 import Form from "./components/Form";
 
-
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden bg-[#F6F8FC]">
       <Hero />
-<Form/>
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[320px_1fr] lg:items-start lg:gap-12">
-        <Sidebar />
-        <div className="divide-y divide-[#E5E7EB]">
-          <ProcessSteps />
-          <Services />
-          <WhyChooseUs />
+      <Form />
+
+      <section className="relative bg-[#F6F8FC] py-14 sm:py-20 lg:py-24">
+        <div className="pointer-events-none absolute left-0 top-20 h-72 w-72 rounded-full bg-[#2F6FED]/5 blur-3xl" />
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 sm:px-8 lg:grid-cols-[300px_1fr] lg:gap-14 lg:px-10">
+          <Sidebar />
+          <div className="min-w-0 divide-y divide-slate-200/80">
+            <ProcessSteps />
+            <Services />
+            <WhyChooseUs />
+          </div>
         </div>
-      </div>
+      </section>
 
       <CTABand />
       <Footer />
