@@ -28,7 +28,6 @@ const highlights = [
 
 const pestOptions = [
   { name: "Ants", icon: Bug },
-  { name: "Roaches", icon: Bug, mirror: true },
   { name: "Rodents", icon: Rat },
   { name: "Termites", icon: Worm },
   { name: "Bed Bugs", icon: Bed },
@@ -164,9 +163,7 @@ export default function Hero() {
                 href={siteConfig.phoneHref}
                 className="group mt-4 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#75C043] px-5 text-sm font-black text-[#07140F] transition hover:bg-[#8BD15C]"
               >
-                <PhoneCall className="h-4 w-4"
-                
-                />
+                <PhoneCall className="h-4 w-4" />
                 Call Now
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </a>
@@ -178,10 +175,9 @@ export default function Hero() {
         <div className="rounded-[28px] border border-white/10 bg-[#0A1B14]/85 p-4 shadow-2xl backdrop-blur-xl sm:p-5">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-center">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <p className="text-base font-black leading-tight sm:max-w-[170px] sm:text-lg">
-Which pest do you need 
-
-help with?              </p>
+              <p className="whitespace-nowrap text-base font-black leading-tight sm:text-lg">
+                Which pest do you need help with?
+              </p>
 
               <div className="flex flex-wrap gap-2 sm:border-l sm:border-white/10 sm:pl-5">
                 {pestOptions.map((pest) => {
@@ -192,11 +188,7 @@ help with?              </p>
                       href="#quote"
                       className="group inline-flex flex-col items-center gap-1.5 rounded-2xl bg-white/5 px-4 py-2.5 text-[11px] font-bold text-white/70 transition hover:bg-[#75C043] hover:text-[#07140F]"
                     >
-                      <PestIcon
-                        className={`h-5 w-5 text-[#8BD15C] transition group-hover:text-[#07140F] ${
-                          pest.mirror ? "scale-x-[-1]" : ""
-                        }`}
-                      />
+                      <PestIcon className="h-5 w-5 text-[#8BD15C] transition group-hover:text-[#07140F]" />
                       {pest.name}
                     </Link>
                   );
