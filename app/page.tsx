@@ -9,6 +9,7 @@ import CTABand from "./components/Ctaband";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/Scrolltotop";
 import WhyChooseUs from "./components/Whychooseus";
+import FAQ from "./components/Faq";
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
 
       <ProtectionSection />
 
-
+<FAQ/>
       <CTABand />
 
       <Footer />

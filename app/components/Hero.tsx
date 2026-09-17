@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  Bed,
   Bug,
   CheckCircle2,
   Clock,
@@ -12,7 +13,10 @@ import {
   Leaf,
   MoreHorizontal,
   PhoneCall,
+  Rat,
   ShieldCheck,
+  Worm,
+  Zap,
 } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
@@ -23,12 +27,12 @@ const highlights = [
 ];
 
 const pestOptions = [
-  "Ants",
-  "Roaches",
-  "Rodents",
-  "Termites",
-  "Bed Bugs",
-  "Wasps",
+  { name: "Ants", icon: Bug },
+  { name: "Roaches", icon: Bug, mirror: true },
+  { name: "Rodents", icon: Rat },
+  { name: "Termites", icon: Worm },
+  { name: "Bed Bugs", icon: Bed },
+  { name: "Wasps", icon: Zap },
 ];
 
 const promises = [
@@ -180,16 +184,23 @@ Which pest do you need
 help with?              </p>
 
               <div className="flex flex-wrap gap-2 sm:border-l sm:border-white/10 sm:pl-5">
-                {pestOptions.map((pest) => (
-                  <Link
-                    key={pest}
-                    href="#quote"
-                    className="group inline-flex flex-col items-center gap-1.5 rounded-2xl bg-white/5 px-4 py-2.5 text-[11px] font-bold text-white/70 transition hover:bg-[#75C043] hover:text-[#07140F]"
-                  >
-                    <Bug className="h-5 w-5 text-[#8BD15C] transition group-hover:text-[#07140F]" />
-                    {pest}
-                  </Link>
-                ))}
+                {pestOptions.map((pest) => {
+                  const PestIcon = pest.icon;
+                  return (
+                    <Link
+                      key={pest.name}
+                      href="#quote"
+                      className="group inline-flex flex-col items-center gap-1.5 rounded-2xl bg-white/5 px-4 py-2.5 text-[11px] font-bold text-white/70 transition hover:bg-[#75C043] hover:text-[#07140F]"
+                    >
+                      <PestIcon
+                        className={`h-5 w-5 text-[#8BD15C] transition group-hover:text-[#07140F] ${
+                          pest.mirror ? "scale-x-[-1]" : ""
+                        }`}
+                      />
+                      {pest.name}
+                    </Link>
+                  );
+                })}
 
                 <Link
                   href="#quote"
