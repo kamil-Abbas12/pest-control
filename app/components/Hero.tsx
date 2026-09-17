@@ -4,38 +4,62 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  ArrowDown,
   ArrowRight,
+  Bug,
   CheckCircle2,
+  Clock,
+  Home,
+  Leaf,
+  MoreHorizontal,
   PhoneCall,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
+const highlights = [
+  "Local Pest Professionals",
+  "Fast Response",
+  "No-Obligation Call",
+];
+
+const pestOptions = [
+  "Ants",
+  "Roaches",
+  "Rodents",
+  "Termites",
+  "Bed Bugs",
+  "Wasps",
+];
+
+const promises = [
+  { icon: Leaf, label: "A Cleaner Home" },
+  { icon: ShieldCheck, label: "A Healthier Family" },
+  { icon: Home, label: "A Pest-Free Tomorrow" },
+];
+
 export default function Hero() {
   return (
-    <section className="relative min-h-[850px] overflow-hidden bg-[#07140F] text-white">
-      {/* Background image */}
+    <section className="relative min-h-[900px] overflow-hidden bg-[#07140F] text-white">
+      {/* Background photo */}
       <Image
         src="/hero-bg.webp"
-        alt=""
+        alt="Pest control professional treating the exterior of a home"
         fill
         priority
-        className="object-cover"
+        className="object-cover object-right"
         sizes="100vw"
       />
 
       {/* Premium overlays */}
-      <div className="absolute inset-0 bg-[#06120D]/70" />
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(102,190,77,.28),transparent_32%),linear-gradient(90deg,rgba(4,15,10,.95)_0%,rgba(4,15,10,.76)_45%,rgba(4,15,10,.25)_100%)]" />
+      <div className="absolute inset-0 bg-[#06120D]/55" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,15,10,.97)_0%,rgba(4,15,10,.9)_36%,rgba(4,15,10,.5)_66%,rgba(4,15,10,.22)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#07140F] via-[#07140F]/85 to-transparent" />
 
       {/* Decorative glow */}
-      <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-[#75C043]/15 blur-[120px]" />
+      <div className="absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-[#75C043]/15 blur-[130px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="grid min-h-[850px] items-center gap-10 pb-32 pt-28 lg:grid-cols-[1fr_.9fr]">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-10 pt-28 sm:px-8 lg:px-10">
+        <div className="grid items-center gap-12 pb-14 pt-6 lg:grid-cols-[1.05fr_.95fr]">
           {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -44,29 +68,29 @@ export default function Hero() {
             className="max-w-2xl"
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C5EFAE] backdrop-blur-xl">
-              <Sparkles className="h-4 w-4" />
-              Professional Pest Control
+              <ShieldCheck className="h-4 w-4" />
+              Fast &amp; Reliable Pest Control
             </div>
 
-            <h1 className="mt-7 text-5xl font-black leading-[.95] tracking-[-0.055em] sm:text-7xl lg:text-[82px]">
-              Take back
+            <h1 className="mt-7 text-5xl font-black leading-[.98] tracking-[-0.05em] sm:text-6xl lg:text-[76px]">
+              Pests Don&apos;t
+              <span className="block">Belong Here.</span>
               <span className="block text-[#8BD15C]">
-                your home.
+                Take Back Your Home.
               </span>
             </h1>
 
-            <p className="mt-7 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
-              Connect with local pest control professionals for help with
-              rodents, insects, termites, wasps and other common pest
-              problems.
+            <p className="mt-6 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
+              Connect with trusted local pest control professionals for help
+              with ants, roaches, rodents, termites, wasps, bed bugs, and more.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="#quote"
-                className="group inline-flex h-14 items-center justify-center gap-3 rounded-full bg-[#75C043] px-7 font-black text-[#07140F] shadow-[0_18px_60px_rgba(117,192,67,.25)] transition hover:-translate-y-1 hover:bg-[#8BD15C]"
+                className="group inline-flex h-14 items-center justify-center gap-3 rounded-full bg-[#75C043] px-7 font-black text-[#07140F] shadow-[0_18px_60px_rgba(117,192,67,.3)] transition hover:-translate-y-1 hover:bg-[#8BD15C]"
               >
-                Get Pest-Free Help
+                Get Pest Control Help
                 <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
               </Link>
 
@@ -80,14 +104,10 @@ export default function Hero() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
-              {[
-                "Local professionals",
-                "Fast response",
-                "No-obligation call",
-              ].map((item) => (
+              {highlights.map((item) => (
                 <span
                   key={item}
-                  className="flex items-center gap-2 text-sm text-white/65"
+                  className="flex items-center gap-2 text-sm text-white/70"
                 >
                   <CheckCircle2 className="h-4 w-4 text-[#8BD15C]" />
                   {item}
@@ -96,96 +116,123 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* RIGHT 3D IMAGE */}
+          {/* RIGHT — floating info cards */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.88, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.15 }}
-            className="relative mx-auto w-full max-w-[590px]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15 }}
+            className="flex w-full max-w-sm flex-col gap-4 lg:ml-auto"
           >
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="relative"
-            >
-              <div className="absolute inset-10 rounded-full bg-[#75C043]/20 blur-[90px]" />
-
-              <Image
-                src="/hero-pest-3d.webp"
-                alt="3D pest control illustration"
-                width={650}
-                height={650}
-                priority
-                className="relative z-10 h-auto w-full object-contain drop-shadow-[0_35px_60px_rgba(0,0,0,.45)]"
-              />
-            </motion.div>
-
-            {/* Floating protection card */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute left-0 top-20 z-20 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-xl sm:left-2"
-            >
-              <ShieldCheck className="h-6 w-6 text-[#8BD15C]" />
-
-              <p className="mt-2 text-xs font-bold uppercase tracking-wider text-white/50">
-                Protection
+            <div className="rounded-3xl border border-white/15 bg-[#0A1B14]/75 p-5 shadow-2xl backdrop-blur-xl">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#75C043]/15">
+                <Clock className="h-5 w-5 text-[#8BD15C]" />
+              </span>
+              <p className="mt-4 text-sm font-black uppercase tracking-wider text-white">
+                Fast Response
               </p>
-
-              <p className="mt-1 text-sm font-black">
-                Your home matters.
+              <p className="mt-1 text-sm leading-6 text-white/60">
+                Local professionals ready to help.
               </p>
-            </motion.div>
+            </div>
 
-            {/* Floating availability */}
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                duration: 4.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute bottom-20 right-0 z-20 rounded-2xl bg-white p-5 text-[#07140F] shadow-2xl"
-            >
+            <div className="rounded-3xl border border-white/15 bg-[#0A1B14]/75 p-5 shadow-2xl backdrop-blur-xl">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#75C043]/15">
+                <Home className="h-5 w-5 text-[#8BD15C]" />
+              </span>
+              <p className="mt-4 text-sm font-black uppercase tracking-wider text-white">
+                Home Protection
+              </p>
+              <p className="mt-1 text-sm leading-6 text-white/60">
+                Safe, effective solutions for a pest-free home.
+              </p>
+            </div>
+
+            <div className="rounded-3xl bg-white p-5 text-[#07140F] shadow-2xl">
               <div className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#75C043]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Available
+                  Need help today?
                 </span>
               </div>
-
-              <p className="mt-2 text-lg font-black">
-                Local help
+              <p className="mt-2 text-lg font-black leading-snug">
+                Talk with a local pest professional.
               </p>
-            </motion.div>
+              <a
+                href={siteConfig.phoneHref}
+                className="group mt-4 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#75C043] px-5 text-sm font-black text-[#07140F] transition hover:bg-[#8BD15C]"
+              >
+                <PhoneCall className="h-4 w-4" />
+                Call Now
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </a>
+            </div>
           </motion.div>
         </div>
-      </div>
 
-      {/* Bottom scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
-        <motion.a
-          href="#quote"
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-          }}
-          className="flex flex-col items-center gap-2 text-xs font-bold uppercase tracking-[.2em] text-white/50"
-        >
-          Scroll
-          <ArrowDown className="h-4 w-4" />
-        </motion.a>
+        {/* PEST SELECTOR */}
+        <div className="rounded-[28px] border border-white/10 bg-[#0A1B14]/85 p-4 shadow-2xl backdrop-blur-xl sm:p-5">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <p className="text-base font-black leading-tight sm:max-w-[130px] sm:text-lg">
+                What pest are you dealing with?
+              </p>
+
+              <div className="flex flex-wrap gap-2 sm:border-l sm:border-white/10 sm:pl-5">
+                {pestOptions.map((pest) => (
+                  <Link
+                    key={pest}
+                    href="#quote"
+                    className="group inline-flex flex-col items-center gap-1.5 rounded-2xl bg-white/5 px-4 py-2.5 text-[11px] font-bold text-white/70 transition hover:bg-[#75C043] hover:text-[#07140F]"
+                  >
+                    <Bug className="h-5 w-5 text-[#8BD15C] transition group-hover:text-[#07140F]" />
+                    {pest}
+                  </Link>
+                ))}
+
+                <Link
+                  href="#quote"
+                  className="group inline-flex flex-col items-center gap-1.5 rounded-2xl bg-white/5 px-4 py-2.5 text-[11px] font-bold text-white/70 transition hover:bg-[#75C043] hover:text-[#07140F]"
+                >
+                  <MoreHorizontal className="h-5 w-5 text-[#8BD15C] transition group-hover:text-[#07140F]" />
+                  Other
+                </Link>
+              </div>
+            </div>
+
+            <div className="shrink-0 self-start lg:self-auto lg:pr-2">
+              <p className="rotate-0 text-2xl font-medium leading-none text-white/85 [font-family:'Brush_Script_MT','Segoe_Script',cursive]">
+                Local Help. Real Results.
+              </p>
+              <svg
+                viewBox="0 0 200 10"
+                className="mt-2 h-2.5 w-40 text-[#75C043]"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 6C40 2 90 8 198 3"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* VALUE STRIP */}
+        <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3 pl-1">
+          {promises.map(({ icon: Icon, label }) => (
+            <span
+              key={label}
+              className="flex items-center gap-2 text-sm font-semibold text-white/60"
+            >
+              <Icon className="h-4 w-4 text-[#8BD15C]" />
+              {label}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
