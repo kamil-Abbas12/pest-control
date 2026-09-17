@@ -31,7 +31,7 @@ title: "Insect Control",
 text: "Solutions for common household insects.",
 },
 {
-image: "/bedbugs.webp",
+image: "/bedbug.webp",
 title: "Bed Bug Control",
 text: "Professional help for unwanted bed bugs.",
 },
@@ -41,7 +41,6 @@ export default function Services() {
 return ( <section className="bg-[#F7F8F4] px-5 py-24 sm:px-8 lg:px-10 lg:py-32"> <div className="mx-auto max-w-7xl"> <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end"> <div className="max-w-3xl"> <p className="text-sm font-black uppercase tracking-[.2em] text-[#70A84B]">
 Our services </p>
 
-```
         <h2 className="mt-4 text-4xl font-black tracking-[-.04em] text-[#102016] sm:text-6xl">
           We handle the pests
           <span className="text-[#6AA642]"> you don't want.</span>

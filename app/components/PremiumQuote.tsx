@@ -7,7 +7,7 @@ import Form from "./Form";
 
 export default function PremiumQuote() {
 return ( <section id="quote" className="relative z-20 -mt-24 px-5 sm:px-8 lg:px-10"> <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[36px] shadow-[0_35px_100px_rgba(10,25,15,.20)]"> <Image
-       src="/form-bg.webp"
+       src="/pest-control.webp"
        alt=""
        fill
        className="object-cover"

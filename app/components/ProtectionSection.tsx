@@ -52,8 +52,8 @@ transition={{ duration: 0.7 }}
     >
       <div className="overflow-hidden rounded-[36px]">
         <Image
-          src="/protection.webp"
-          alt="Pest protection"
+          src="/protection-pest-control.webp"
+          alt="Pest control protection"
           width={1000}
           height={800}
           className="h-[520px] w-full object-cover"
