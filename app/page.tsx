@@ -1,31 +1,42 @@
+
 import Hero from "./components/Hero";
-import Sidebar from "./components/Sidebar";
-import ProcessSteps from "./components/ProcessSteps";
+import PremiumQuote from "./components/PremiumQuote";
 import Services from "./components/Services";
-import WhyChooseUs from "./components/Whychooseus";
+import AboutSection from "./components/AboutSection";
+import PestShowcase from "./components/PestShowcase";
+import ProcessSteps from "./components/ProcessSteps";
+import ProtectionSection from "./components/ProtectionSection";
 import CTABand from "./components/Ctaband";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/Scrolltotop";
-import Form from "./components/Form";
-
+import WhyChooseUs from "./components/Whychooseus";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden bg-[#F7F8F4]">
       <Hero />
-<Form/>
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[320px_1fr] lg:items-start lg:gap-12">
-        <Sidebar />
-        <div className="divide-y divide-[#E5E7EB]">
-          <ProcessSteps />
-          <Services />
-          <WhyChooseUs />
-        </div>
-      </div>
+
+      <PremiumQuote />
+
+      <Services />
+
+      <AboutSection />
+
+      <PestShowcase />
+
+      <WhyChooseUs />
+
+      <ProcessSteps />
+
+      <ProtectionSection />
+
 
       <CTABand />
+
       <Footer />
+
       <ScrollToTop />
     </main>
   );
 }
+

@@ -1,144 +1,191 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
+  ArrowDown,
   ArrowRight,
-  MapPin,
+  CheckCircle2,
   PhoneCall,
-  Smartphone,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#0B1630]">
-      {/* Generated background: gradient + repeating house/shield motif, no stock photo needed */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1630] via-[#0F1F45] to-[#0B1630]" />
-        <svg
-          className="absolute inset-0 h-full w-full opacity-[0.12]"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden
-        >
-          <defs>
-            <pattern
-              id="pest-pattern"
-              width="120"
-              height="120"
-              patternUnits="userSpaceOnUse"
-              patternTransform="rotate(8)"
+    <section className="relative min-h-[850px] overflow-hidden bg-[#07140F] text-white">
+      {/* Background image */}
+      <Image
+        src="/hero-bg.webp"
+        alt=""
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
+      />
+
+      {/* Premium overlays */}
+      <div className="absolute inset-0 bg-[#06120D]/70" />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(102,190,77,.28),transparent_32%),linear-gradient(90deg,rgba(4,15,10,.95)_0%,rgba(4,15,10,.76)_45%,rgba(4,15,10,.25)_100%)]" />
+
+      {/* Decorative glow */}
+      <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-[#75C043]/15 blur-[120px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="grid min-h-[850px] items-center gap-10 pb-32 pt-28 lg:grid-cols-[1fr_.9fr]">
+          {/* LEFT */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-2xl"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#C5EFAE] backdrop-blur-xl">
+              <Sparkles className="h-4 w-4" />
+              Professional Pest Control
+            </div>
+
+            <h1 className="mt-7 text-5xl font-black leading-[.95] tracking-[-0.055em] sm:text-7xl lg:text-[82px]">
+              Take back
+              <span className="block text-[#8BD15C]">
+                your home.
+              </span>
+            </h1>
+
+            <p className="mt-7 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
+              Connect with local pest control professionals for help with
+              rodents, insects, termites, wasps and other common pest
+              problems.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="#quote"
+                className="group inline-flex h-14 items-center justify-center gap-3 rounded-full bg-[#75C043] px-7 font-black text-[#07140F] shadow-[0_18px_60px_rgba(117,192,67,.25)] transition hover:-translate-y-1 hover:bg-[#8BD15C]"
+              >
+                Get Pest-Free Help
+                <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
+              </Link>
+
+              <a
+                href={siteConfig.phoneHref}
+                className="inline-flex h-14 items-center justify-center gap-3 rounded-full border border-white/20 bg-white/10 px-7 font-bold backdrop-blur-xl transition hover:bg-white/15"
+              >
+                <PhoneCall className="h-5 w-5 text-[#9BDD70]" />
+                {siteConfig.phoneDisplay}
+              </a>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
+              {[
+                "Local professionals",
+                "Fast response",
+                "No-obligation call",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="flex items-center gap-2 text-sm text-white/65"
+                >
+                  <CheckCircle2 className="h-4 w-4 text-[#8BD15C]" />
+                  {item}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* RIGHT 3D IMAGE */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.15 }}
+            className="relative mx-auto w-full max-w-[590px]"
+          >
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative"
             >
-              <path
-                d="M30 10 L50 18 V34 C50 46 42 53 30 58 C18 53 10 46 10 34 V18 Z"
-                fill="none"
-                stroke="#2F6FED"
-                strokeWidth="2"
+              <div className="absolute inset-10 rounded-full bg-[#75C043]/20 blur-[90px]" />
+
+              <Image
+                src="/hero-pest-3d.webp"
+                alt="3D pest control illustration"
+                width={650}
+                height={650}
+                priority
+                className="relative z-10 h-auto w-full object-contain drop-shadow-[0_35px_60px_rgba(0,0,0,.45)]"
               />
-              <path
-                d="M22 34 L30 27 L38 34 V44 H22 Z"
-                fill="none"
-                stroke="#2F6FED"
-                strokeWidth="2"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#pest-pattern)" />
-        </svg>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-transparent to-[#0B1630]/40" />
+            </motion.div>
+
+            {/* Floating protection card */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute left-0 top-20 z-20 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-xl sm:left-2"
+            >
+              <ShieldCheck className="h-6 w-6 text-[#8BD15C]" />
+
+              <p className="mt-2 text-xs font-bold uppercase tracking-wider text-white/50">
+                Protection
+              </p>
+
+              <p className="mt-1 text-sm font-black">
+                Your home matters.
+              </p>
+            </motion.div>
+
+            {/* Floating availability */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute bottom-20 right-0 z-20 rounded-2xl bg-white p-5 text-[#07140F] shadow-2xl"
+            >
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#75C043]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  Available
+                </span>
+              </div>
+
+              <p className="mt-2 text-lg font-black">
+                Local help
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex max-w-[1200px] flex-col items-center px-4 py-14 text-center text-white sm:px-6 sm:py-20 lg:min-h-[765px] lg:justify-center lg:py-24">
-        <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-[54px]">
-          Pest Exterminators
-        </h1>
-
-        <p className="mt-4 max-w-[850px] text-base font-medium leading-[1.6] sm:text-lg md:text-xl">
-          We connect you with local pest exterminators across the United
-          States. Same-day appointments are generally available.
-          <span className="font-bold italic">
-            {" "}
-            Give us a call at{" "}
-            <a href={siteConfig.phoneHref} className="text-[#5B8DFF] underline">
-              {siteConfig.phoneDisplay}
-            </a>{" "}
-            for help solving your pest issue today.
-          </span>
-        </p>
-
-        <Link
-          href="#help"
-          className="mt-5 flex h-14 items-center gap-2 rounded-[10px] bg-[#2F6FED] px-6 text-lg font-bold text-white transition-all hover:bg-[#1D4ED8] hover:scale-[1.02] sm:h-[70px] sm:gap-3 sm:px-9 sm:text-2xl"
+      {/* Bottom scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
+        <motion.a
+          href="#quote"
+          animate={{ y: [0, 8, 0] }}
+          transition={{
+            duration: 1.8,
+            repeat: Infinity,
+          }}
+          className="flex flex-col items-center gap-2 text-xs font-bold uppercase tracking-[.2em] text-white/50"
         >
-          Get Help Now
-          <ArrowRight size={22} strokeWidth={2.5} className="sm:hidden" />
-          <ArrowRight size={28} strokeWidth={2.5} className="hidden sm:block" />
-        </Link>
-
-        <div className="mt-5 text-xl font-bold sm:text-2xl md:text-[27px]">
-          Call Now:{" "}
-          <a href={siteConfig.phoneHref} className="text-[#5B8DFF]">
-            {siteConfig.phoneDisplay}
-          </a>
-        </div>
-
-        <div className="mt-5 flex items-center gap-2 text-2xl text-[#FBBF24] sm:text-3xl md:text-[32px]">
-          <span>★</span>
-          <span>★</span>
-          <span>★</span>
-          <span>★</span>
-          <span>★</span>
-        </div>
-
-        <p className="mt-4 max-w-[650px] text-base font-medium italic leading-[1.6] sm:text-lg md:text-xl">
-          We've helped thousands of people connect with an exterminator to
-          address their pest problems quickly &amp; easily.
-        </p>
-
-        <div className="mt-10 grid w-full grid-cols-2 gap-3 sm:mt-12 sm:max-w-xl sm:gap-5 md:grid-cols-4 md:max-w-none">
-          <div className="flex h-24 w-full flex-col items-center justify-center rounded-lg bg-white px-2 text-center text-[#0B1630] shadow-lg sm:h-[122px] sm:px-3">
-            <MapPin size={26} strokeWidth={2} className="mb-2 text-[#0B1630] sm:h-8 sm:w-8" />
-            <span className="text-sm font-bold leading-tight sm:text-[17px]">
-              Local
-              <br />
-              Technicians
-            </span>
-          </div>
-
-          <div className="flex h-24 w-full flex-col items-center justify-center rounded-lg bg-white px-2 text-center text-[#0B1630] shadow-lg sm:h-[122px] sm:px-3">
-            <PhoneCall size={24} strokeWidth={2} className="mb-2 sm:h-[30px] sm:w-[30px]" />
-            <span className="text-sm font-bold leading-tight sm:text-[17px]">
-              Emergency
-              <br />
-              Service Available
-            </span>
-          </div>
-
-          <div className="flex h-24 w-full flex-col items-center justify-center rounded-lg bg-white px-2 text-center text-[#0B1630] shadow-lg sm:h-[122px] sm:px-3">
-            <Smartphone size={25} strokeWidth={2} className="mb-2 sm:h-[31px] sm:w-[31px]" />
-            <span className="text-sm font-bold leading-tight sm:text-[17px]">
-              Same / Next Day
-              <br />
-              Appointments
-            </span>
-          </div>
-
-          <div className="flex h-24 w-full flex-col items-center justify-center rounded-lg bg-white px-2 text-center text-[#0B1630] shadow-lg sm:h-[122px] sm:px-3">
-            <ShieldCheck size={25} strokeWidth={2} className="mb-2 sm:h-[31px] sm:w-[31px]" />
-            <span className="text-sm font-bold leading-tight sm:text-[17px]">
-              Zero Obligation
-              <br />
-              Call
-            </span>
-          </div>
-        </div>
-
-        <a
-          href="#marketing-disclosures"
-          className="mt-10 text-base text-white underline hover:text-[#5B8DFF] sm:mt-16 sm:text-lg"
-        >
-          Marketing Disclosures
-        </a>
+          Scroll
+          <ArrowDown className="h-4 w-4" />
+        </motion.a>
       </div>
     </section>
   );
 }
+

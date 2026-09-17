@@ -19,8 +19,18 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+
+html {
+  scroll-behavior: smooth;
 }
+
+::selection {
+  background: #75c043;
+  color: #07140f;
+}
+
+body {
+  background: #f7f8f4;
+}
+

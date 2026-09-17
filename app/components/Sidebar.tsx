@@ -1,22 +1,19 @@
 import { Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import Image from "next/image";
 
 export default function Sidebar() {
   return (
     <aside className="lg:sticky lg:top-24 lg:self-start">
       <div className="overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white shadow-sm">
         <div className="flex flex-col items-center px-6 py-6 text-center sm:px-8 sm:py-8">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#F1F4FA]">
-            <svg
-              viewBox="0 0 24 24"
-              className="h-10 w-10 text-[#0B1630]/70"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 20c0-4 3.6-6 8-6s8 2 8 6" strokeLinecap="round" />
-            </svg>
+          <div className="flex h-50 w-50 items-center justify-center rounded-full bg-[#F1F4FA]">
+        <Image
+        src="/sidebar-pest.webp"
+        alt="Pest Control"
+        width={200}
+        height={20}
+        />
           </div>
           <h3 className="mt-5 text-2xl font-bold text-[#0B1630]">Available Now</h3>
           <p className="mt-2 text-sm text-[#0B1630]/60">

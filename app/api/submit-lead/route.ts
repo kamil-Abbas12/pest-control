@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
 
     // --- 2. Mirror the same data into the Google Sheet, same as before ---
     const payload = new URLSearchParams();
-    payload.append(ENTRY_IDS.campaign, "pest-control");
+    payload.append(ENTRY_IDS.campaign, "Pest-Control");
     payload.append(ENTRY_IDS.firstName, body.firstName ?? "");
     payload.append(ENTRY_IDS.lastName, body.lastName ?? "");
     payload.append(ENTRY_IDS.address, body.address ?? "");
