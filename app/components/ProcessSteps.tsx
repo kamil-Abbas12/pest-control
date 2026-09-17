@@ -7,8 +7,8 @@ const steps = [
 {
 number: "01",
 icon: Phone,
-title: "Tell us about the problem",
-text: "Share your basic information and what type of pest problem you're experiencing.",
+title: "Share your pest concerns",
+text: "Enter your basic information and details about your pest concern.",
 },
 {
 number: "02",
@@ -19,8 +19,8 @@ text: "We'll help connect you with an appropriate local pest control professiona
 {
 number: "03",
 icon: UserCheck,
-title: "Discuss your options",
-text: "The professional can discuss your situation, service options and availability.",
+title: "Explore your options",
+text: "Speak with a professional about your pest problem, available services, and scheduling options.",
 },
 ];
 

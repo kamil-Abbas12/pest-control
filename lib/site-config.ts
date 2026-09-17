@@ -5,8 +5,8 @@ export const siteConfig = {
 
   domain: "pestcontrol.topdoglead.com",
 
-  phoneDisplay: "(954) 231-0151",
-  phoneHref: "tel:+19542310151",
+  phoneDisplay: "+1 (678) 462-8013",
+  phoneHref: "tel:+16784628013",
 
   locationLabel: "Nationwide",
 };

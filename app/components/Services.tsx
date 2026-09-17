@@ -47,9 +47,7 @@ Our services </p>
         </h2>
 
         <p className="mt-5 max-w-2xl text-base leading-8 text-slate-500 sm:text-lg">
-          From everyday household pests to more persistent infestations,
-          connect with professionals who can help identify the right
-          approach.
+         From common household pests to stubborn infestations, connect with professionals who can recommend the right solution.
         </p>
       </div>
 

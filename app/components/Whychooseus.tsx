@@ -12,22 +12,22 @@ const features = [
 {
 icon: ShieldCheck,
 title: "Professional connections",
-text: "Connect with pest control professionals who can discuss your situation.",
+text: "Connect with local pest control professionals who can discuss your pest concerns.",
 },
 {
 icon: Clock3,
 title: "Fast response",
-text: "Same or next-day appointments may be available depending on location.",
+text: "Connect with professionals who may have appointments available today or tomorrow.",
 },
 {
 icon: Home,
 title: "Home & business",
-text: "Assistance is available for residential and commercial pest problems.",
+text: "Support is available for a wide range of residential and commercial pest concerns.",
 },
 {
 icon: BadgeCheck,
 title: "Wide pest coverage",
-text: "Get help with many common household and property pests.",
+text: "Tackle common household and property pests with professional help.",
 },
 ];
 
@@ -63,7 +63,7 @@ Why get connected </p>
               <Icon className="h-6 w-6" />
             </div>
 
-            <h3 className="mt-7 text-xl font-black text-[#102016]">
+            <h3 className="mt-7 text-xl  font-black text-[#102016]">
               {feature.title}
             </h3>
 

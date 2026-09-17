@@ -14,14 +14,14 @@ text: "Get connected with professionals who can help with common household pest 
 {
 image: "/commercial.webp",
 eyebrow: "Commercial",
-title: "Keep your business protected.",
+title: "Keep your business pest-free and protected.",
 text: "Find professional assistance for offices, facilities, retail locations and other commercial spaces.",
 },
 {
 image: "/protection.webp",
 eyebrow: "Protection",
-title: "Deal with the problem before it grows.",
-text: "Early attention can help prevent a small pest problem from becoming a larger one.",
+title: "Act early before a small pest problem becomes a bigger one.",
+text: "Addressing pest issues early can help prevent them from becoming more serious.",
 },
 ];
 
@@ -31,8 +31,12 @@ Built around your needs </p>
 
 
       <h2 className="mt-4 text-4xl font-black tracking-[-.04em] sm:text-6xl">
-        More than pest control.
-        <span className="text-[#8BD15C]"> Peace of mind.</span>
+        <span>
+Reliable pest help      
+
+        </span>
+        <br></br>
+  <span className="text-[#8BD15C]"> Peace of mind starts here.</span>
       </h2>
     </div>
 

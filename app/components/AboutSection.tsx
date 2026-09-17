@@ -32,8 +32,8 @@ className="relative"
         <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
       </div>
 
-      <div className="absolute -bottom-7 -right-4 rounded-[24px] bg-[#102016] p-6 text-white shadow-2xl sm:-right-8">
-        <p className="text-4xl font-black text-[#8BD15C]">24/7</p>
+      <div className="absolute -bottom-7 -right-10 rounded-[20px] bg-[#102016] p-4 text-white shadow-2xl sm:-right-8">
+        <p className="text-4xl p-2 font-black text-[#8BD15C]">24/7</p>
         <p className="mt-1 text-xs font-bold uppercase tracking-wider text-white/55">
           Pest assistance
         </p>
@@ -51,14 +51,12 @@ className="relative"
       </p>
 
       <h2 className="mt-4 text-4xl font-black tracking-[-.04em] text-[#102016] sm:text-6xl">
-        A simpler way to deal with unwanted pests.
+A smarter way to tackle the unwanted pests
       </h2>
 
       <p className="mt-6 text-base leading-8 text-slate-500 sm:text-lg">
-        When pests show up, getting the right help shouldn't be
-        complicated. We make it easier to connect with local pest control
-        professionals who can discuss your situation and available
-        services.
+       When pests become a problem, finding the right help should be simple. We connect you with local pest control professionals who can discuss your needs and available services.
+ 
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
