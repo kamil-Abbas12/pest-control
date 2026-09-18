@@ -28,24 +28,12 @@ const serviceLinks = [
 ];
 
 const companyLinks = [
-  { label: "Contact Us", href: "/contact" },
-  { label: "Locations", href: "/locations" },
+  { label: "Contact Us", href: "#quote" },
 ];
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
-  {
-    label: "Do Not Sell or Share My Personal Information",
-    href: "/privacy-infosharing",
-  },
-  {
-    label: "Limit the Use of My Sensitive Personal Information",
-    href: "/privacy-sensitive",
-  },
-  {
-    label: "Accessibility",
-    href: "/accessibility",
-  },
+  
   {
     label: "Terms and Conditions",
     href: "/terms",
@@ -301,24 +289,7 @@ export default function Footer() {
 
             <p>
               Consent may be revoked as permitted by applicable law. See our{" "}
-              <Link
-                href="/privacy-infosharing"
-                className="underline transition hover:text-white"
-              >
-                Do Not Sell or Share My Personal Information
-              </Link>{" "}
-              page and{" "}
-              <Link
-                href="/tcpa-consent"
-                className="underline transition hover:text-white"
-              >
-                TCPA Consent
-              </Link>{" "}
-              information for additional details.
-            </p>
-
-            <p>
-              Please review our{" "}
+           
               <Link
                 href="/privacy-policy"
                 className="underline transition hover:text-white"

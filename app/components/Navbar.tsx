@@ -127,13 +127,13 @@ export default function Navbar() {
               {siteConfig.phoneDisplay}
             </a>
 
-            <Link
+            <a
               href="#quote"
               className="hidden items-center gap-2 rounded-full bg-[#75C043] px-5 py-3 text-sm font-black text-[#07140F] shadow-lg transition hover:-translate-y-0.5 hover:bg-[#8BD15C] sm:flex"
             >
               Get Help
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </a>
 
             {/* MOBILE BUTTON */}
             <button
