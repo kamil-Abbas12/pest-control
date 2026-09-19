@@ -4,6 +4,7 @@ export const siteConfig = {
   brandWordmark: "PESTCONTROL",
 
   domain: "pestcontrol.topdoglead.com",
+  url: "https://pestcontrol.topdoglead.com",
 
   phoneDisplay: "+432 5355 209",
   phoneHref: "tel:4325355209",
