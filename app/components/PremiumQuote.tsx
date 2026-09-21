@@ -93,7 +93,7 @@ export default function PremiumQuote() {
             </div>
 
             {/* YOUR EXISTING FUNCTIONAL FORM */}
-            <Form />
+            <Form embedded />
           </motion.div>
         </div>
       </div>

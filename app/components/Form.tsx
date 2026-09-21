@@ -13,10 +13,19 @@ import {
   Lock,
   Loader2,
   Check,
+  ChevronDown,
 } from "lucide-react";
 
 // Same Jornaya campaign snippet ID as the solar site — confirmed working.
 const JORNAYA_CAMPAIGN_ID = "372b9fce-b1fd-68e6-0d81-5286de90f4f0";
+
+// Two columns from sm up, stacked on phones so inputs never get cramped.
+const ROW = "grid grid-cols-1 gap-3 sm:grid-cols-2";
+
+// text-base on mobile prevents iOS Safari from zooming in on focus (it zooms
+// on anything under 16px). Taller fields on touch devices, compact on sm+.
+const CONTROL =
+  "h-11 w-full min-w-0 rounded-lg border border-slate-300 pl-9 pr-3 text-base text-slate-700 placeholder:text-slate-400 focus:border-[#2F6FED] focus:outline-none focus:ring-1 focus:ring-[#2F6FED] sm:h-10 sm:text-sm";
 
 function sanitizeDigits(e: React.FormEvent<HTMLInputElement>, maxLen: number) {
   const target = e.target as HTMLInputElement;
@@ -59,6 +68,7 @@ function InputField({
   required = false,
   maxLength,
   inputMode,
+  autoComplete,
   onInput,
 }: {
   icon: React.ReactNode;
@@ -68,26 +78,32 @@ function InputField({
   required?: boolean;
   maxLength?: number;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  autoComplete?: string;
   onInput?: (e: React.FormEvent<HTMLInputElement>) => void;
 }) {
   return (
-    <div className="relative">
-      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">{icon}</span>
+    <div className="relative min-w-0">
+      <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+        {icon}
+      </span>
       <input
         name={name}
         type={type}
         required={required}
         placeholder={placeholder}
+        aria-label={placeholder}
         maxLength={maxLength}
         inputMode={inputMode}
+        autoComplete={autoComplete}
         onInput={onInput}
-        className="h-10 w-full rounded-lg border border-slate-300 pl-9 pr-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-[#2F6FED] focus:outline-none focus:ring-1 focus:ring-[#2F6FED]"
+        // The date rule keeps iOS from centering the date text.
+        className={`${CONTROL} [&::-webkit-date-and-time-value]:text-left`}
       />
     </div>
   );
 }
 
-export default function Form() {
+export default function Form({ embedded = false }: { embedded?: boolean }) {
   const [agreed, setAgreed] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -241,20 +257,30 @@ export default function Form() {
   }
 
   return (
-    <section id="help" className="bg-[#0B1630] px-4 py-16 sm:py-20">
-      <div className="mx-auto w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
-        <div className="mb-6 flex items-center gap-3 border-b border-slate-100 pb-5">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#EEF3FF]">
+    <div
+      id="help"
+      // embedded: no navy band, no card-in-a-card — the parent supplies the card.
+      className={embedded ? "w-full" : "bg-[#0B1630] px-4 py-12 sm:py-16 lg:py-20"}
+    >
+      <div
+        className={
+          embedded
+            ? "w-full"
+            : "mx-auto w-full max-w-xl rounded-2xl bg-white p-5 shadow-2xl sm:p-8"
+        }
+      >
+        <div className="mb-5 flex items-center gap-3 border-b border-slate-100 pb-4 sm:mb-6 sm:pb-5">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EEF3FF] sm:h-11 sm:w-11">
             <Home className="h-5 w-5 text-[#2F6FED]" />
           </span>
-          <div>
-            <h2 className="text-xl font-extrabold text-[#0B1630]">Schedule a Call</h2>
+          <div className="min-w-0">
+            <h2 className="text-lg font-extrabold text-[#0B1630] sm:text-xl">Schedule a Call</h2>
             <p className="text-sm font-semibold text-[#1D4ED8]">with the Pest Control Team</p>
           </div>
         </div>
 
         {submitted ? (
-          <div className="rounded-xl border border-slate-100 bg-slate-50 p-6 text-center">
+          <div className="rounded-xl border border-slate-100 bg-slate-50 p-5 text-center sm:p-6">
             <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#2F6FED]/10">
               <Check className="h-5 w-5 text-[#1D4ED8]" strokeWidth={3} />
             </div>
@@ -269,9 +295,21 @@ export default function Form() {
             <input id="Hidleadid" name="Hidleadid" type="hidden" defaultValue="" />
             <input id="hidTrusted" name="hidTrusted" type="hidden" defaultValue="" />
 
-            <div className="grid grid-cols-2 gap-3">
-              <InputField icon={<User className="h-4 w-4" />} name="firstName" placeholder="First Name*" required />
-              <InputField icon={<User className="h-4 w-4" />} name="lastName" placeholder="Last Name*" required />
+            <div className={ROW}>
+              <InputField
+                icon={<User className="h-4 w-4" />}
+                name="firstName"
+                placeholder="First Name*"
+                autoComplete="given-name"
+                required
+              />
+              <InputField
+                icon={<User className="h-4 w-4" />}
+                name="lastName"
+                placeholder="Last Name*"
+                autoComplete="family-name"
+                required
+              />
             </div>
 
             <InputField
@@ -280,17 +318,37 @@ export default function Form() {
               placeholder="Phone Number* (10 digits)"
               type="tel"
               inputMode="numeric"
+              autoComplete="tel-national"
               maxLength={10}
               onInput={(e) => sanitizeDigits(e, 10)}
               required
             />
 
-            <InputField icon={<Mail className="h-4 w-4" />} name="email" placeholder="Email Address*" type="email" required />
+            <InputField
+              icon={<Mail className="h-4 w-4" />}
+              name="email"
+              placeholder="Email Address*"
+              type="email"
+              autoComplete="email"
+              required
+            />
 
-            <InputField icon={<Home className="h-4 w-4" />} name="address" placeholder="Street Address*" required />
+            <InputField
+              icon={<Home className="h-4 w-4" />}
+              name="address"
+              placeholder="Street Address*"
+              autoComplete="address-line1"
+              required
+            />
 
-            <div className="grid grid-cols-2 gap-3">
-              <InputField icon={<Building2 className="h-4 w-4" />} name="city" placeholder="City*" required />
+            <div className={ROW}>
+              <InputField
+                icon={<Building2 className="h-4 w-4" />}
+                name="city"
+                placeholder="City*"
+                autoComplete="address-level2"
+                required
+              />
               <InputField
                 icon={<MapPin className="h-4 w-4" />}
                 name="state"
@@ -301,17 +359,26 @@ export default function Form() {
               />
             </div>
 
-            <InputField
-              icon={<MapPin className="h-4 w-4" />}
-              name="zip"
-              placeholder="ZIP Code* (5 digits)"
-              inputMode="numeric"
-              maxLength={5}
-              onInput={(e) => sanitizeDigits(e, 5)}
-              required
-            />
-
-            <InputField icon={<Calendar className="h-4 w-4" />} name="dob" placeholder="Date of Birth*" type="date" required />
+            <div className={ROW}>
+              <InputField
+                icon={<MapPin className="h-4 w-4" />}
+                name="zip"
+                placeholder="ZIP Code* (5 digits)"
+                inputMode="numeric"
+                autoComplete="postal-code"
+                maxLength={5}
+                onInput={(e) => sanitizeDigits(e, 5)}
+                required
+              />
+              <InputField
+                icon={<Calendar className="h-4 w-4" />}
+                name="dob"
+                placeholder="Date of Birth*"
+                type="date"
+                autoComplete="bday"
+                required
+              />
+            </div>
 
             <div>
               <p className="mb-2 text-sm font-medium text-[#0B1630]">Do you own your home?*</p>
@@ -320,11 +387,12 @@ export default function Form() {
                   <button
                     type="button"
                     key={val}
+                    aria-pressed={ownsHome === val}
                     onClick={() => {
                       setOwnsHome(val);
                       setOwnsHomeError(false);
                     }}
-                    className={`flex flex-1 items-center justify-between rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors ${
+                    className={`flex min-h-11 flex-1 items-center justify-between rounded-lg border px-4 py-2.5 text-base font-medium transition-colors sm:min-h-10 sm:text-sm ${
                       ownsHome === val
                         ? "border-[#2F6FED] bg-[#2F6FED]/5 text-[#0B1630]"
                         : "border-slate-300 text-slate-600"
@@ -346,13 +414,14 @@ export default function Form() {
               )}
             </div>
 
-            <div className="relative">
-              <Clock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+            <div className="relative min-w-0">
+              <Clock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
               <select
                 name="preferredTime"
                 required
                 defaultValue=""
-                className="h-10 w-full appearance-none rounded-lg border border-slate-300 pl-9 pr-3 text-sm text-slate-600 focus:border-[#2F6FED] focus:outline-none focus:ring-1 focus:ring-[#2F6FED]"
+                aria-label="Preferred time to receive a call"
+                className={`${CONTROL} appearance-none truncate pr-9 text-slate-600`}
               >
                 <option value="" disabled>
                   Preferred Time to Receive a Call*
@@ -361,15 +430,17 @@ export default function Form() {
                 <option value="Afternoon (12pm - 4pm)">Afternoon (12pm - 4pm)</option>
                 <option value="Evening (4pm - 8pm)">Evening (4pm - 8pm)</option>
               </select>
+              {/* appearance-none removes the native arrow, so draw our own */}
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
             </div>
 
-            <label className="flex items-start gap-2 pt-1 text-xs text-slate-500">
+            <label className="flex items-start gap-2.5 pt-1 text-xs leading-5 text-slate-500 sm:gap-2">
               <input
                 type="checkbox"
                 required
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-0.5 h-3.5 w-3.5 rounded border-slate-300 text-[#2F6FED] focus:ring-[#2F6FED]"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 text-[#2F6FED] focus:ring-[#2F6FED] sm:h-3.5 sm:w-3.5"
               />
               <span>
                 By submitting the form I agree with the{" "}
@@ -384,7 +455,7 @@ export default function Form() {
             <button
               type="submit"
               disabled={isSubmitting || !jornayaReady}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#2F6FED] py-3 text-sm font-bold text-white transition-colors hover:bg-[#1D4ED8] disabled:cursor-not-allowed disabled:opacity-60"
+              className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#2F6FED] py-3 text-base font-bold text-white transition-colors hover:bg-[#1D4ED8] disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-11 sm:text-sm"
             >
               {isSubmitting ? (
                 "Submitting..."
@@ -404,12 +475,12 @@ export default function Form() {
             )}
 
             <p className="flex items-center justify-center gap-1.5 pt-1 text-xs text-slate-500">
-              <Lock className="h-3.5 w-3.5" /> Your information is safe and secure.
+              <Lock className="h-3.5 w-3.5 shrink-0" /> Your information is safe and secure.
             </p>
           </form>
         )}
       </div>
       <div id="LeadiDscript" />
-    </section>
+    </div>
   );
 }
