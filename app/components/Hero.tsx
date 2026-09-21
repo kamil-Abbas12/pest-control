@@ -204,24 +204,6 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="shrink-0 self-start lg:self-auto lg:pr-2">
-              <p className="rotate-0 text-2xl font-medium leading-none text-white/85 [font-family:'Brush_Script_MT','Segoe_Script',cursive]">
-                Local Help. Real Results.
-              </p>
-              <svg
-                viewBox="0 0 200 10"
-                className="mt-2 h-2.5 w-40 text-[#75C043]"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 6C40 2 90 8 198 3"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
           </div>
         </div>
 
