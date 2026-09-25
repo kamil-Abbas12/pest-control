@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: `Terms and Conditions | ${siteConfig.brand}`,
-  description: `Terms and Conditions for ${siteConfig.brand}, a free referral service operated by TopDog Leads LLC.`,
+  description: `Terms and Conditions for ${siteConfig.brand}, TopDog Leads LLC's free nationwide referral service — review the rules, disclosures, and conditions for using our site.`,
 };
 
 const sections = [
