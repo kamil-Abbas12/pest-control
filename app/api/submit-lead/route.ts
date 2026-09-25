@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "@/lib/mongodb";
 
+import { NextRequest, NextResponse } from "next/server";
+import getClientPromise from "@/lib/mongodb";
 const GOOGLE_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSd8lTKWb3ahBVrvbkBPXDgHU_oG-uVAd7PrCpuPXIZs61qfOw/formResponse";
 
@@ -66,7 +66,8 @@ export async function POST(req: NextRequest) {
     const ownsHome = body.ownsHome ?? body.hasInsurance ?? "";
 
     // --- 1. Save the full lead to MongoDB Atlas ---
-    const client = await clientPromise;
+        // --- 1. Save the full lead to MongoDB Atlas ---
+    const client = await getClientPromise();
     const db = client.db(DB_NAME);
     await db.collection(COLLECTION).insertOne({
       firstName: body.firstName ?? "",
